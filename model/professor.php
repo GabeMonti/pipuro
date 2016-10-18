@@ -1,21 +1,5 @@
 <?php
 
-/* ================== Passa tabela para a $professores ================== */
-$query = odbc_exec($db,'SELECT      codProfessor, 
-                                    nome,
-                                    email, 
-                                    idSenac, 
-                                    tipo 
-                        FROM Professor');
-
-while($result = odbc_fetch_array($query)) {
-	$professores[$result['codProfessor']] = array($result['codProfessor'], 
-                                            $result['nome'], 
-                                            $result['email'], 
-                                            $result['idSenac'], 
-                                            $result['tipo']);
-}
-
 /* ================== Passa dados para tabela Area ================== 
 if(isset($_POST['area'])) {
 	$area = $_POST['area'];
@@ -51,3 +35,18 @@ if(isset($_POST['newArea'])){
 		$erro = "danger";
 	}
 }*/
+/* ================== Passa tabela para a $professores ================== */
+$query = odbc_exec($db,'SELECT      codProfessor, 
+                                    nome,
+                                    email, 
+                                    idSenac, 
+                                    tipo 
+                        FROM Professor');
+
+while($result = odbc_fetch_array($query)) {
+	$professores[$result['codProfessor']] = array($result['codProfessor'], 
+                                            $result['nome'], 
+                                            $result['email'], 
+                                            $result['idSenac'], 
+                                            $result['tipo']);
+}
