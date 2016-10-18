@@ -1,12 +1,5 @@
 <?php
 
-/* ================== Passa tabela para a $areas ================== */
-$query = odbc_exec($db,'SELECT codArea, descricao FROM Area');
-
-while($result = odbc_fetch_array($query)) {
-	$areas[$result['codArea']] = $result['descricao'];
-}
-
 /* ================== Passa tabela para a $assutons ================== */
 $query = odbc_exec($db,'SELECT codAssunto, descricao, codArea FROM Assunto');
 
@@ -50,4 +43,11 @@ if(isset($_POST['newAssunto']) && isset($_POST['newArea'])){
 		$msg = "ERRO";
 		$erro = "danger";
 	}
+}
+
+/* ================== Passa tabela para a $areas ================== */
+$query = odbc_exec($db,'SELECT codArea, descricao FROM Area');
+
+while($result = odbc_fetch_array($query)) {
+	$areas[$result['codArea']] = $result['descricao'];
 }
