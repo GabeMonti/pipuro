@@ -1,35 +1,5 @@
 <?php
 
-/* ================== Passa tabela para a $assutons ================== */
-$query = odbc_exec($db,'SELECT codAssunto, descricao, codArea FROM Assunto');
-
-while($result = odbc_fetch_array($query)) {
-	$assuntos[$result['codAssunto']] = array($result['descricao'], $result['codArea']);
-}
-
-
-/* ================== Passa tabela para a $questoes ================== */
-$query = odbc_exec($db,'SELECT  codQuestao,
-                                textoQuestao,
-                                codAssunto,
-                                codImagem,
-                                codTipoQuestao,
-                                codProfessor,
-                                ativo,
-                                dificuldade
-                        FROM Questao');
-
-while($result = odbc_fetch_array($query)) {
-	$questoes[$result['codQuestao']] = array(   $result['codQuestao'], 
-                                                $result['textoQuestao'],
-                                                $result['codAssunto'],
-                                                $result['codImagem'],
-                                                $result['codTipoQuestao'],
-                                                $result['codProfessor'],
-                                                $result['ativo'],
-                                                $result['dificuldade']);
-}
-
 /* ================== Passa dados para tabela Area ================== 
 if(isset($_POST['area'])) {
 	$area = $_POST['area'];
@@ -88,3 +58,50 @@ if(	isset($_POST['newQuestao']) &&
 		$erro = "danger";
 	}
 }*/
+
+/* ================== Passa tabela para a $professores ================== */
+$query = odbc_exec($db,'SELECT      codProfessor, 
+                                    nome,
+                                    email, 
+                                    idSenac, 
+                                    tipo 
+                        FROM Professor');
+
+while($result = odbc_fetch_array($query)) {
+	$professores[$result['codProfessor']] = array($result['codProfessor'], 
+                                            $result['nome'], 
+                                            $result['email'], 
+                                            $result['idSenac'], 
+                                            $result['tipo']);
+}
+
+
+/* ================== Passa tabela para a $assutons ================== */
+$query = odbc_exec($db,'SELECT codAssunto, descricao, codArea FROM Assunto');
+
+while($result = odbc_fetch_array($query)) {
+	$assuntos[$result['codAssunto']] = array($result['codAssunto'], $result['descricao'], $result['codArea']);
+}
+
+
+/* ================== Passa tabela para a $questoes ================== */
+$query = odbc_exec($db,'SELECT  codQuestao,
+                                textoQuestao,
+                                codAssunto,
+                                codImagem,
+                                codTipoQuestao,
+                                codProfessor,
+                                ativo,
+                                dificuldade
+                        FROM Questao');
+
+while($result = odbc_fetch_array($query)) {
+	$questoes[$result['codQuestao']] = array(   $result['codQuestao'], 
+                                                $result['textoQuestao'],
+                                                $result['codAssunto'],
+                                                $result['codImagem'],
+                                                $result['codTipoQuestao'],
+                                                $result['codProfessor'],
+                                                $result['ativo'],
+                                                $result['dificuldade']);
+}

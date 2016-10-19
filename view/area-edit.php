@@ -1,10 +1,11 @@
 
         <section id="editArea">
             <div class="container">
+                <h5>Editar Cadastro</h5>
                 <form class="form-group" action="area.php" method="post">
-                    <input class="from-control" type="text" name="idArea" value="<?php echo $_GET['edit'] ?>" hidden>
-                    <input class="from-control" type="text" name="newArea" value="<?php echo $_GET['oldArea'] ?>">
-                    <button class="btn btn-primary" type="submit">Editar</button>
+                    <input type="text" name="idArea" value="<?php echo $_GET['edit'] ?>" hidden>
+                    <input class="form-control" type="text" name="newArea" value="<?php echo $_GET['old'] ?>">
+                    <button class="btn btn-quiz" type="submit">Editar</button>
                 </form>
             </div>
         </section>

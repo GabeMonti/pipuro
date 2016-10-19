@@ -5,7 +5,7 @@
 if(isset($_POST['area'])) {
 	$area = $_POST['area'];
 	if(odbc_exec($db, "INSERT INTO Area (descricao) VALUES ('" . $area . "')")) {
-		$msg = "Area $area, inserida com sucesso.";
+		$msg = "Área $area, inserida com sucesso.";
 		$erro = "success";
 	} else {
 		$msg = "ERRO";
@@ -41,5 +41,5 @@ if(isset($_POST['newArea'])){
 $query = odbc_exec($db,'SELECT codArea, descricao FROM Area');
 
 while($result = odbc_fetch_array($query)) {
-	$areas[$result['codArea']] = $result['descricao'];
+	$areas[$result['codArea']] = array($result['codArea'], $result['descricao']);
 }
